@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    SISTEMA DE TICKET
                 </div>
 
                 <div class="links">

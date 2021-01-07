@@ -1,0 +1,1 @@
+prueba desde la pagina de laravel
