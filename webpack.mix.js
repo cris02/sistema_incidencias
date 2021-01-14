@@ -29,6 +29,7 @@ mix
 
     //requiere dos parametros un archivo origen y un archivo destino
     .copy('resources/vendor/fontawesome-free-5.15.1-web/webfonts', 'public/webfonts')
+    .copy('resources/img', 'public/img') //parametros de copy('carpeta origen','carpeta destino')
 
     //limpiar o actualizar la cache del navegador en base a lo que se tenga en el servidor
     .version() //los cambios se reflejan en el archivo public/mix-manifest.json
