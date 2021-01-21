@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Entities\Admin\User::class, // aqui configuramos la direccion del controlador user
         ],
 
         // 'users' => [

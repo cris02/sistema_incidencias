@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Entities\Admin;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -37,3 +37,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 }
+

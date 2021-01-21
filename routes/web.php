@@ -11,10 +11,13 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('test');
 });
+
+Route::get('administracion/usuarios', 'Admin\UserController@index');
 
 //Gestion
     //tickets
@@ -27,7 +30,7 @@ Route::get('/', function () {
 //reportes
     //creados
     //pendientes
-    
+
 //Administracion
     //usuarios
     //roles
