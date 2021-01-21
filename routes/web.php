@@ -15,3 +15,21 @@
 Route::get('/', function () {
     return view('test');
 });
+
+//Gestion
+    //tickets
+    //asignacion
+
+//Configuracion
+    //tipos
+    //prioridades
+
+//reportes
+    //creados
+    //pendientes
+    
+//Administracion
+    //usuarios
+    //roles
+    //permisos(solo lectura)
+
