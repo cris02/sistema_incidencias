@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{ env('APP_NAME') }} | @yield('title', 'Inicio')</title>
+  <title>@yield('title', 'Inicio') | {{ env('APP_NAME') }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -43,7 +43,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            {{-- agregamos una seccion del titulo dinamicamente --}}
+            {{-- agregamos una seccion del titulo dinamicamente y tambien su icono --}}
             <h1>@yield('icon_title') @yield('title', 'Inicio')</h1>
           </div>
           <div class="col-sm-6">
