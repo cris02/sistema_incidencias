@@ -24,6 +24,8 @@ class UsersTableSeeder extends Seeder
         'end_date'
         */
 
+        //primero hay q limpiar los datos de la tabla para generar los campos con el seeder
+        User::truncate();
 
         //creamos el primier usuario para gestionar la seguridad
         $root = new User();
@@ -46,5 +48,11 @@ class UsersTableSeeder extends Seeder
         $user -> created_by = $root->id;
         $user -> updated_by = $root->id;
         $user -> save();
+
+        //crear 10 usuarios random por medio del userFactory
+        factory(User::class, 10) -> create([
+            'created_by' => $user -> id, //aqui permite sobre-escribir el id 4 en todos los campos que el factory esta creando
+            'updated_by' => $user -> id,
+        ]); //llama al modelo user
     }
 }
