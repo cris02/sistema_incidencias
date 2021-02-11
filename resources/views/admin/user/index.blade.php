@@ -51,79 +51,23 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    @foreach ($users as $user)
                     <tr>
-                        <td>Nombre 1</td>
-                        <td>Correo 1</td>
-                        <td>Usuario 1</td>
-                        <td>Fecha Inicio 1</td>
-                        <td>Fecha de Fin 1</td>
+                        <td> {{$user->firstname}}</td>
+                        <td> {{$user->email}}</td>
+                        <td> {{$user->username}}</td>
+                        <td> {{$user->start_date}}</td>
+                        <td> {{$user->end_date}}</td>
                     </tr>
-                    <tr>
-                        <td>Nombre 2</td>
-                        <td>Correo 2</td>
-                        <td>Usuario 2</td>
-                        <td>Fecha Inicio 2</td>
-                        <td>Fecha de Fin 2</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre 3</td>
-                        <td>Correo 3</td>
-                        <td>Usuario 3</td>
-                        <td>Fecha Inicio 3</td>
-                        <td>Fecha de Fin 3</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre 4</td>
-                        <td>Correo 4</td>
-                        <td>Usuario 4</td>
-                        <td>Fecha Inicio 4</td>
-                        <td>Fecha de Fin 4</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre 5</td>
-                        <td>Correo 5</td>
-                        <td>Usuario 5</td>
-                        <td>Fecha Inicio 5</td>
-                        <td>Fecha de Fin 5</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre 6</td>
-                        <td>Correo 6</td>
-                        <td>Usuario 6</td>
-                        <td>Fecha Inicio 6</td>
-                        <td>Fecha de Fin 6</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre 7</td>
-                        <td>Correo 7</td>
-                        <td>Usuario 7</td>
-                        <td>Fecha Inicio 7</td>
-                        <td>Fecha de Fin 7</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre 8</td>
-                        <td>Correo 8</td>
-                        <td>Usuario 8</td>
-                        <td>Fecha Inicio 8</td>
-                        <td>Fecha de Fin 8</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre 9</td>
-                        <td>Correo 9</td>
-                        <td>Usuario 9</td>
-                        <td>Fecha Inicio 9</td>
-                        <td>Fecha de Fin 9</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre 10</td>
-                        <td>Correo 10</td>
-                        <td>Usuario 10</td>
-                        <td>Fecha Inicio 10</td>
-                        <td>Fecha de Fin 10</td>
-                    </tr>
+                    @endforeach
+
                 </tbody>
             </table>
         </div>
+
+        {{-- aplicando paginacion a la tabla --}}
+        {{$users->render()}}
     </div>
 
 

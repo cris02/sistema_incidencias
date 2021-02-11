@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Admin\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,8 +15,33 @@ class UserController extends Controller
      */
     public function index()
     {
+
+        //enviar un valor a la vista
+        // $pruebaValor = 'prueba de variable en la vista 2';
+        // $texto = 'Este es otro contenido';
+
         //retornar un mensaje de prueba
-        return view('admin.user.index');
+        // return view('admin.user.index', compact('pruebaValor'));
+
+        //segunda forma
+        // return view('admin.user.index')
+        //     ->with('pruebaValor', $pruebaValor)
+        //     ->with('pruebaValor2', $pruebaValor2);
+
+        //tercera forma
+        // return view('admin.user.index', [
+        //     'pruebaValor' => $pruebaValor,
+        //     'parametro' => $texto,
+        // ]);
+
+        //listar losusuarios existentes en la base ded atos
+        // $users = User::all(); extrae todos los usuarios de db
+
+        $users = User::paginate(7); // muestra 3 registros por pagina
+
+        return view('admin.user.index', [
+            'users' => $users,
+        ]);
     }
 
     /**

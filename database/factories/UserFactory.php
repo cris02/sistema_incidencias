@@ -32,11 +32,11 @@ $factory->define(User::class, function (Faker $faker) {
         'firstname' => $faker->firstName,
         'lastname' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
-        'username' => $faker->word,
+        'username' => $faker->unique()->word,
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'start_date' => ($start = $faker -> dateTimeBetween('-5 years', 'now')), //dateTimeBetween(anos_desdes, anos_hasta)
         'email_verified_at' => $faker -> randomElement([null, ($validated = $faker -> dateTimeBetween($start, 'now'))]),
-        'end_date' => $faker -> randomElement(null, [$faker -> dateTimeBetween($validated, 'now')]),
+        'end_date' => $faker -> randomElement([null, $faker -> dateTimeBetween($validated, 'now')]),
         'remember_token' => Str::random(12),
         'created_by' => 1,
         'updated_by' => 1,

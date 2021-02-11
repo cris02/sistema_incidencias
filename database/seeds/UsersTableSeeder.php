@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
         $user -> save();
 
         //crear 10 usuarios random por medio del userFactory
-        factory(User::class, 10) -> create([
+        factory(User::class, 200) -> create([
             'created_by' => $user -> id, //aqui permite sobre-escribir el id 4 en todos los campos que el factory esta creando
             'updated_by' => $user -> id,
         ]); //llama al modelo user
