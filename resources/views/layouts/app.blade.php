@@ -60,9 +60,9 @@
     <section class="content">
 
         <!-- Default box -->
-        @yield('content')
-
-      <!-- /.card -->
+        <div class="container-fluid">
+            @yield('content')
+        </div>
 
     </section>
     <!-- /.content -->

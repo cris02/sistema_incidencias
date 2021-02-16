@@ -37,7 +37,7 @@ class UserController extends Controller
         //listar losusuarios existentes en la base ded atos
         // $users = User::all(); extrae todos los usuarios de db
 
-        $users = User::paginate(7); // muestra 3 registros por pagina
+        $users = User::paginate(10); // muestra 3 registros por pagina
 
         return view('admin.user.index', [
             'users' => $users,
@@ -73,7 +73,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        //dd($user) para generar el vlaor o registro almacenado en la base
+        return view('admin.user.show', [
+            'user' => $user
+        ]);
     }
 
     /**

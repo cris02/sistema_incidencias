@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('administracion/usuarios', 'Admin\UserController@index');
+Route::get('administracion/usuarios/{user}', 'Admin\UserController@show');
 
 //Gestion
     //tickets

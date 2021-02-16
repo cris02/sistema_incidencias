@@ -1,7 +1,6 @@
 {{-- vista principal del modulo de administracion  --}}
 
 
-
 {{-- extender la vista principal a la vista usuarios --}}
 @extends('layouts.app')
 
@@ -54,7 +53,7 @@
 
                     @foreach ($users as $user)
                     <tr>
-                        <td> {{$user->firstname}}</td>
+                        <td><a href="usuarios/{{$user->id}}">{{$user->firstname}}</a></td>
                         <td> {{$user->email}}</td>
                         <td> {{$user->username}}</td>
                         <td> {{$user->start_date}}</td>

@@ -16,16 +16,6 @@ use Faker\Generator as Faker;
 |
 */
 
-/*
-        'firstname'
-        'lastname'
-        'email'
-        'username'
-        'password'
-        'email_verified_at'
-        'start_date'
-        'end_date'
-        */
 
 $factory->define(User::class, function (Faker $faker) {
     return [
