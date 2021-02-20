@@ -53,7 +53,7 @@
 
                     @foreach ($users as $user)
                     <tr>
-                        <td><a href="usuarios/{{$user->id}}">{{$user->firstname}}</a></td>
+                        <td><a href="{{route('admin.user.show', $user->id)}}">{{$user->firstname}}</a></td>
                         <td> {{$user->email}}</td>
                         <td> {{$user->username}}</td>
                         <td> {{$user->start_date}}</td>
