@@ -44,6 +44,8 @@ class UserController extends Controller
         ]);
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,8 +53,16 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        //crear un nuevo usario - retornar la vista
+        return view('admin.user.create', [
+            //'users' => $users,
+        ]);
     }
+
+
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -62,8 +72,31 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //almacenar el dato recibido de la vista admin.user.create
+
+        $user = new User();
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->username);
+
+        //modificar despues
+        $user->created_by = 1; //TODO eliminar este paso porque se obtendra del usuario en sesion
+        $user->updated_by = 1; //TODO eliminar este paso porque se obtendra del usuario en sesion
+
+        //guardar en la base
+        $user->save();
+
+        //redireccionar despues de guardar
+        return redirect()->route('admin.user.show', $user->id);
+
+
+        //dd($request->all(), $user);
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -86,6 +119,9 @@ class UserController extends Controller
         ]);
     }
 
+
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -96,6 +132,9 @@ class UserController extends Controller
     {
         //
     }
+
+
+
 
     /**
      * Update the specified resource in storage.
@@ -108,6 +147,9 @@ class UserController extends Controller
     {
         //
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

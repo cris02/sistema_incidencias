@@ -302,68 +302,39 @@
             <!-- /.tab-pane -->
 
             <div class="tab-pane" id="settings">
-              <form class="form-horizontal">
-                <div class="form-group row">
-                  <label for="inputName" class="col-sm-2 col-form-label">Nombres</label>
-                  <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputName" placeholder="Nombres">
-                  </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputName" class="col-sm-2 col-form-label">Apellidos</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Apellidos">
+                {!! Form::open() !!}
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        {!! Field::text('firstname', $user->firstname, ['required' => true, 'placeholder' => 'Nombres']) !!}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        {!! Field::text('lastname', $user->lastname, ['placeholder' => 'Apellidos']) !!}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        {!! Field::text('username', $user->username, ['required' => true, 'placeholder' => 'Usuario']) !!}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        {!! Field::email('email', $user->email, ['required' => true, 'placeholder' => 'Correo']) !!}
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        {!! Field::date('start_date', $user->start_date, ['placeholder' => 'Fecha Inicio']) !!}
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="inputName2" class="col-sm-2 col-form-label">Usuario</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName2" placeholder="Usuario">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="float-right">
+                            <button type="submit" class="ml-2 btn btn-success">Guardar</button>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Correo</label>
-                  <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Correo">
-                  </div>
-                </div>
+                {!! Form::open() !!}
 
-                {{-- <div class="form-group row">
-                  <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                  <div class="col-sm-10">
-                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                  </div>
-                </div> --}}
-                {{-- <div class="form-group row">
-                  <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                  </div>
-                </div> --}}
-                {{-- <div class="form-group row">
-                  <div class="offset-sm-2 col-sm-10">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                      </label>
-                    </div>
-                  </div>
-                </div> --}}
-                <div class="form-group row">
-                  <div class="offset-sm-2 col-sm-10">
-                    <button type="submit" class="btn btn-success">Guardar</button>
-                  </div>
-                </div>
-              </form>
+
             </div>
-            <!-- /.tab-pane -->
-          </div>
           <!-- /.tab-content -->
         </div><!-- /.card-body -->
-      </div>
-      <!-- /.nav-tabs-custom -->
     </div>
     <!-- /.col -->
-  </div>
+</div>
   <!-- /.row -->
 @endsection
