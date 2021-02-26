@@ -143,9 +143,28 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        //metodo para actualizar
+        //dd($id, $request->all()); -- para pobrar los que recibimos del formulario al momento de actualizar
+
+        // **** METODO 1 *****
+        // $user->firstname = $request->firstname;
+        // $user->lastname = $request->lastname;
+        // $user->username = $request->username;
+        // $user->email = $request->email;
+        // $user->start_date = $request->start_date;
+        // //guardamos los cambios
+        //$user->save();
+
+
+
+        // **** METODO 2 *****
+        $user->fill($request->all())->save();
+
+        //redireccionamos a la vista show
+        return redirect()->route('admin.user.show', $user->id);
+
     }
 
 

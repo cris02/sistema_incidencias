@@ -302,7 +302,7 @@
             <!-- /.tab-pane -->
 
             <div class="tab-pane" id="settings">
-                {!! Form::open() !!}
+                {!! Form::open(['route' => ['admin.user.update', $user->id], 'method' => 'patch']) !!}
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         {!! Field::text('firstname', $user->firstname, ['required' => true, 'placeholder' => 'Nombres']) !!}
@@ -317,7 +317,7 @@
                         {!! Field::email('email', $user->email, ['required' => true, 'placeholder' => 'Correo']) !!}
                     </div>
                     <div class="col-12 col-sm-6">
-                        {!! Field::date('start_date', $user->start_date, ['placeholder' => 'Fecha Inicio']) !!}
+                        {!! Field::date('start_date', substr($user->start_date, 0, 10), ['placeholder' => 'Fecha Inicio']) !!}
                     </div>
                 </div>
                 <div class="row">
@@ -327,7 +327,7 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::open() !!}
+                {!! Form::close() !!}
 
 
             </div>
