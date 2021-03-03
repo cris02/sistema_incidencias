@@ -72,13 +72,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //almacenar el dato recibido de la vista admin.user.create
 
+        //validar los campos que recibimos del formulario
+        $request->validate([
+            'firstname' => 'required',
+            'email' => 'required | email | unique:users,email',
+            'username' => 'required | unique:users,username'
+        ]);
+
+        //almacenar el dato recibido de la vista admin.user.create
         $user = new User();
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->username = $request->username;
-        $user->email = $request->email;
+        $user->fill($request->all());
         $user->password = bcrypt($request->username);
 
         //modificar despues
@@ -90,7 +94,6 @@ class UserController extends Controller
 
         //redireccionar despues de guardar
         return redirect()->route('admin.user.show', $user->id);
-
 
         //dd($request->all(), $user);
     }
@@ -157,9 +160,16 @@ class UserController extends Controller
         // //guardamos los cambios
         //$user->save();
 
+        //validaciones
+        $request->validate([
+            'firstname' => 'required',
+            'email' => 'required | email | unique:users,email,'.$user->id.',id', //creamos una exception cuando actualizamos los campos
+            'username' => 'required | unique:users,username'.$user->id.',id'
+        ]);
 
 
-        // **** METODO 2 *****
+
+        // **** METODO 2 ***** hay q habilitar o agregar los campos que deseamos modificar en el arreglo $fillable del modelo User
         $user->fill($request->all())->save();
 
         //redireccionamos a la vista show
