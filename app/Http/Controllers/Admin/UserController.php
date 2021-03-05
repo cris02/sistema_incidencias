@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Entities\Admin\User; //se modifico la ruta del modelo User
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreUserRequest;
+use App\Http\Requests\Admin\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -70,15 +72,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-
-        //validar los campos que recibimos del formulario
-        $request->validate([
-            'firstname' => 'required',
-            'email' => 'required | email | unique:users,email',
-            'username' => 'required | unique:users,username'
-        ]);
 
         //almacenar el dato recibido de la vista admin.user.create
         $user = new User();
@@ -146,7 +141,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
         //metodo para actualizar
         //dd($id, $request->all()); -- para pobrar los que recibimos del formulario al momento de actualizar
@@ -159,15 +154,6 @@ class UserController extends Controller
         // $user->start_date = $request->start_date;
         // //guardamos los cambios
         //$user->save();
-
-        //validaciones
-        $request->validate([
-            'firstname' => 'required',
-            'email' => 'required | email | unique:users,email,'.$user->id.',id', //creamos una exception cuando actualizamos los campos
-            'username' => 'required | unique:users,username'.$user->id.',id'
-        ]);
-
-
 
         // **** METODO 2 ***** hay q habilitar o agregar los campos que deseamos modificar en el arreglo $fillable del modelo User
         $user->fill($request->all())->save();
