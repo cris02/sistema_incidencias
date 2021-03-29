@@ -15,66 +15,58 @@
     <i class="fa fa-fw fa-users"></i>
 @endsection
 
+@section('breadcrumbs')
+    <li class="breadcrumb-item active"><a href="{{route('admin.user.index')}}">Usuarios</a></li>
+@endsection
+
 
 {{-- seccion de contenido de la vista --}}
 @section('content')
 
-<div class="card">
+    @component('components.card')
 
-    <div class="card-header">
-      <h3 class="card-title">Listado de Usuarios</h3>
+        {{-- solo funcionan dentro de los componentes --}}
+        @slot('title')
+            Listado de Usuarios
+        @endslot
 
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                <i class="fas fa-times"></i>
-            </button>
+        @slot('action')
             <a href="{{route('admin.user.create')}}" title="Crear Usuario">
                 <i class="fa fa-plus"></i>
             </a>
+        @endslot
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombres</th>
+                            <th>Correo</th>
+                            <th>Usuario</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha de Fin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach ($users as $user)
+                        <tr>
+                            <td><a href="{{route('admin.user.show', $user->id)}}">{{$user->firstname}}</a></td>
+                            <td> {{$user->email}}</td>
+                            <td> {{$user->username}}</td>
+                            <td> {{$user->start_date}}</td>
+                            <td> {{$user->end_date}}</td>
+                        </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- aplicando paginacion a la tabla --}}
+            {{$users->render()}}
         </div>
-    </div>
-
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Nombres</th>
-                        <th>Correo</th>
-                        <th>Usuario</th>
-                        <th>Fecha Inicio</th>
-                        <th>Fecha de Fin</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach ($users as $user)
-                    <tr>
-                        <td><a href="{{route('admin.user.show', $user->id)}}">{{$user->firstname}}</a></td>
-                        <td> {{$user->email}}</td>
-                        <td> {{$user->username}}</td>
-                        <td> {{$user->start_date}}</td>
-                        <td> {{$user->end_date}}</td>
-                    </tr>
-                    @endforeach
-
-                </tbody>
-            </table>
-        </div>
-
-        {{-- aplicando paginacion a la tabla --}}
-        {{$users->render()}}
-    </div>
-
-
-    <!-- /.card-body -->
-    {{-- <div class="card-footer">
-      Footer
-    </div> --}}
-    <!-- /.card-footer-->
-</div>
+    @endcomponent
 
 @endsection

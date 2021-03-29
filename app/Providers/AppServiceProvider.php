@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //agregar el helper que hemos creado
+        require_once __DIR__ . '../../Helpers/Helper.php';
     }
 
     /**
